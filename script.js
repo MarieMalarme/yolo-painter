@@ -11,12 +11,14 @@ const getRandomInt = (min, max) => {
 
 const blendModes = ['screen', 'exclusion', 'multiply', 'luminosity']
 
-let hue = 0
+let hue1 = 0
+let hue2 = 150
 let strokeWidth = 150
 let decreasing = true
 
 document.addEventListener('mousemove', e => {
-  hue++
+  hue1++
+  hue2++
   const sat = e.clientX / 6
   if (decreasing === true && strokeWidth > 75) {
     strokeWidth = strokeWidth - 2
@@ -30,7 +32,16 @@ document.addEventListener('mousemove', e => {
       decreasing = true
     }
   }
-  context.fillStyle = `hsla(${hue}, ${sat}%, 60%, 0.5)`
+
+  const gradient = context.createLinearGradient(
+    e.clientX - 35,
+    e.clientY - 35,
+    e.clientX + 35,
+    e.clientY + 35
+  )
+  gradient.addColorStop(0, `hsl(${hue1}, ${sat}%, 60%)`)
+  gradient.addColorStop(1, `hsl(${hue2}, ${sat}%, 60%)`)
+  context.fillStyle = gradient
   context.beginPath()
   context.arc(e.pageX, e.pageY, strokeWidth, 0, 2 * Math.PI)
   context.fill()
