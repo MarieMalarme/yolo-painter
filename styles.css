@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  min-height: 100vh;
+}
+
+/* GENERIC ELEMENTS */
+
+@font-face {
+  font-family: 'Px Grotesk Bold Italic';
+  src: url('./fonts/Px Grotesk Bold Italic.ttf');
+}
+
+@font-face {
+  font-family: 'Px Grotesk Bold';
+  src: url('./fonts/Px Grotesk Bold.ttf');
+}
+
+.italic {
+  font-family: 'Px Grotesk Bold Italic', sans-serif;
+}
+
+/* CANVAS */
+
+canvas {
+  mix-blend-mode: exclusion;
+  background-color: transparent;
+  position: fixed;
+}
+
+/* BLENDED TEXT */
+
+section.blended-text {
+  color: white;
+  background-color: #0a0a0a;
+  font-size: 370px;
+  line-height: 310px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+section.blended-text p {
+  margin: 100px -50px;
+  font-family: 'Px Grotesk Bold', sans-serif;
+}
+
+/* PICS SECTION */
+
+section.pics {
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  background-color: #dbdbdb;
+  position: sticky;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.pics #pics-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+section.pics #pics-wrapper {
+  width: calc(100vw - 200px);
+  display: flex;
+  overflow: scroll;
+}
+
+section.pics .pic {
+  height: 12vw;
+  width: 12vw;
+  background-size: cover;
+  margin-right: 100px;
+  flex-shrink: 0;
+}
+
+section.pics .pic:last-child {
+  margin-right: 0;
+}
